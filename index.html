@@ -46,7 +46,7 @@
       </div>
       <!-- End Header Content -->
 
-      <!-- Start Form Content -->
+      <!-- Start carForm ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦-->
       <div class="row">
         <form id="carForm" class="col s12" autocomplete="off">
           <!-- Start Check Customer Type -->
@@ -76,51 +76,23 @@
             <option value="" disabled selected>กรุณาเลือกปีจดทะเบียน</option>
             <option value="1">2020</option>
             <option value="2">2019</option>
-            <option value="3">2018</option>
-            <option value="4">2017</option>
-            <option value="5">2016</option>
-            <option value="6">2015</option>
-            <option value="7">2014</option>
-            <option value="8">2013</option>
           </select>
           <!-- End Select Car Years -->
 
-          <!-- Start Car Price Input -->
-          <div class="input-field">
-            <label for="carPrice"><h6>ราคารถยนต์ (บาท)</h6></label>
-            <input id="carPrice" type="text" required class="validate" />
-          </div>
-          <!-- End Car Price Input -->
 
-          <!-- Start Down Payment Input -->
-          <div class="input-field">
-            <label for="downPayment"><h6>เงินดาวน์ (บาท)</h6></label>
-            <input id="downPayment" type="text" required class="validate" />
-          </div>
-          <!-- End Down Payment Input -->
-
-          <!-- Start Submit Button -->
+          <!-- ❤❤❤ปุ่มกดคำนวณ❤❤❤ -->
           <button id="btn" class="btn waves-effect waves-light" type="submit">
             คำนวณ
           </button>
-          <!-- End Submit Button -->
+          <!-- ❤❤❤ปุ่มกดคำนวณ❤❤❤ -->
         </form>
       </div>
-      <!-- End Form Content -->
+      <!-- End carForm ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦-->
 
       <!-- Start Table Content -->
       <div id="result"></div>
       <!-- End Table Content -->
 
-      <!-- Start Footer -->
-      <div id="footer" class="center-align">
-        <p>
-          © 2021 P Auto
-          <br />
-          โทร. 095-826-3339
-        </p>
-      </div>
-      <!-- End Footer -->
     </div>
     <!-- End Container -->
 
@@ -135,9 +107,9 @@
 
     <!-- Start Script For Get Form Values and Calculation -->
     <script>
-      // Initialize LIFF
+      // Initialize LIFF ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦
       liff
-        .init({ liffId: "1657458120-J1bmkEmL" })
+        .init({ liffId: "1657507962-KjrV02p7" })
         .then(() => {
           runApp();
         })
@@ -145,15 +117,12 @@
           console.error(err.code, error.message);
         });
 
-      // runApp();
+      // runApp(); ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦
       function runApp() {
-        // Initialize AutoNumeric
-        let car_price = new AutoNumeric("#carPrice", "integerPos");
-        let down_paymentnew = new AutoNumeric("#downPayment", "integerPos");
 
         // Listen for form submit
         let form = document.getElementById("carForm");
-        form.addEventListener("submit", submitForm);
+        form.addEventListener("submit", submitForm); // Row156, 193
 
         // Listen for check customer change
         document.querySelectorAll('input[name="customer"]').forEach((customer) => {
@@ -163,14 +132,6 @@
                 <option value="" disabled selected>กรุณาเลือกปีจดทะเบียน</option>
                 <option value="1">2020</option>
                 <option value="2">2019</option>
-                <option value="3">2018</option>
-                <option value="4">2017</option>
-                <option value="5">2016</option>
-                <option value="6">2015</option>
-                <option value="7">2014</option>
-                <option value="8">2013</option>
-                <option value="9">2012</option>
-                <option value="10">2011</option>
               `;
             }
             if (e.target.checked && e.target.value === "promotion") {
@@ -178,24 +139,16 @@
                 <option value="" disabled selected>กรุณาเลือกปีจดทะเบียน</option>
                 <option value="1">2020</option>
                 <option value="2">2019</option>
-                <option value="3">2018</option>
-                <option value="4">2017</option>
-                <option value="5">2016</option>
-                <option value="6">2015</option>
-                <option value="7">2014</option>
-                <option value="8">2013</option>
               `;
             }
           });
         });
 
         // Function form submit
-        function submitForm(e) {
+        function submitForm(e) { // Row156, 193
           e.preventDefault();
           // Get values and set to number type
           let carYear = Number(getInputValue("carYear"));
-          let carPrice = Number(getInputValue("carPrice").replace(/,/g, ""));
-          let downPayment = Number(getInputValue("downPayment").replace(/,/g, ""));
           let customers = document.querySelectorAll('input[name="customer"]');
           let customerType;
           customers.forEach((customer) => {
@@ -208,33 +161,21 @@
           // Reset form
           form.reset();
 
-          // Rest AutoNumeric
-          car_price.clear(true);
-          down_paymentnew.clear(true);
-
-          // Loan
-          let loan = carPrice - downPayment;
-
           // Calculation installment payment
-          let resultCalculate = paymentCalculate(carYear, loan, customerType);
+          let resultCalculate = paymentCalculate(carYear);
           // console.log(resultCalculate);
 
           // Sends messages on behalf of the user to the chat screen where the LIFF app is opened.
-          if (
+          // จะส่งข้อความได้ต้องเปิด LIFF จากห้องแชทเท่านั้น เลยมี if (liff.getContext().type !== “none”) มาดักไว้
+          if ( // ถ้าเปิด LIFF จากไลน์
             liff.getContext().type !== "none" &&
             liff.getContext().type !== "external"
           ) {
             // Create flex message
-            let message = createFlexMessage(
-              carYear,
-              carPrice,
-              downPayment,
-              loan,
-              resultCalculate,
-              customerType
-            );
+            let message = createFlexMessage(carYear);
 
             // Send messages
+            // ให้ส่ง flex message แล้วปิดหน้าต่าง
             liff
               .sendMessages(message)
               .then(() => {
@@ -245,14 +186,8 @@
               });
           } else {
             // Result table in browser
-            createResultTable(
-              carYear,
-              carPrice,
-              downPayment,
-              loan,
-              resultCalculate,
-              customerType
-            );
+            // ถ้าไม่ได้เปิดจากไลน์ ให้แสดงตารางในหน้าเว็บ
+            createResultTable(carYear);
           }
         }
       }
@@ -262,133 +197,11 @@
         return document.getElementById(id).value;
       }
 
-      // Function payment calculation
-      function paymentCalculate(carYear, loan, customerType) {
-        if (customerType === "normal") {
-          // console.log("Normal customer calculation Oh yay!");
-          // term: interest rate
-          const interestRates = {
-            5: { 36: 3.9, 48: 3.9, 60: 4.4, 72: 5.25, 84: 6.95 },
-            7: { 36: 4.35, 48: 4.35, 60: 4.7, 72: 5.5, 84: 7.35 },
-            8: { 36: 4.65, 48: 4.65, 60: 5.3, 72: 5.95, 84: 7.75 },
-            9: { 36: 4.65, 48: 4.65, 60: 5.3, 72: 5.95, 84: 7.75 },
-            10: { 36: 5.7, 48: 5.7, 60: 6.25, 72: 7.25, 84: 8.75 },
-          };
-          // Check car year for interest rate
-          switch (carYear) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-              // console.log("carYear <= 5 years");
-              return interestCalculation(loan, interestRates[5]);
-              break;
-            case 6:
-            case 7:
-              // console.log("carYear 6-7 years");
-              return interestCalculation(loan, interestRates[7]);
-              break;
-            case 8:
-              // console.log("carYear 8 years");
-              return interestCalculation(loan, interestRates[8]);
-              break;
-            case 9:
-              // console.log("carYear 9 years");
-              return interestCalculation(loan, interestRates[9]);
-              break;
-            case 10:
-              // console.log("carYear 10 years");
-              return interestCalculation(loan, interestRates[10]);
-          }
-        } else {
-          // console.log("Promotion customer calculation Woohooo!");
-          // term: interest rate
-          const interestRates = {
-            5: { 48: 2.79, 60: 2.99, 72: 3.89 },
-            8: { 48: 2.99, 60: 3.29, 72: 4.25 },
-          };
-          // Check car year for interest rate
-          switch (carYear) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-              // console.log("carYear <= 5 years");
-              return interestCalculation(loan, interestRates[5]);
-              break;
-            case 6:
-            case 7:
-            case 8:
-              // console.log("carYear <= 8 years");
-              return interestCalculation(loan, interestRates[8]);
-          }
-        }
-      }
-
-      // Function interest calculation
-      function interestCalculation(loan, interestRate) {
-        let result = {};
-        Object.keys(interestRate).forEach((term) => {
-          // Calculate
-          let interest = loan * (interestRate[term] / 100) * (term / 12);
-          let loanIncludeInterest = loan + interest;
-          let installment = loanIncludeInterest / term;
-
-          result[term] = {
-            interest: numberToString(interest),
-            interestRate: interestRate[term],
-            loanIncludeInterest: numberToString(loanIncludeInterest),
-            installment: numberToString(installment),
-          };
-        });
-
-        return result;
-      }
-
-      // Function convert a number into a locale-specific numeric representation of the number
-      function numberToString(number) {
-        return number.toLocaleString("en-US", {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        });
-      }
-
       // Create result table
-      function createResultTable(
-        carYear,
-        carPrice,
-        downPayment,
-        loan,
-        resultCalculate,
-        customerType
-      ) {
+      function createResultTable(carYear) {
         let carYearTxt = new Date().getFullYear() - carYear;
-        let carPriceTxt = numberToString(carPrice);
-        let downPaymentTxt = numberToString(downPayment);
-        let loanTxt = numberToString(loan);
 
-        let interestRate36 =
-          resultCalculate[36] !== undefined
-            ? resultCalculate[36].interestRate
-            : null;
-        let installment36 =
-          resultCalculate[36] !== undefined ? resultCalculate[36].installment : null;
-        let interestRate48 = resultCalculate[48].interestRate;
-        let installment48 = resultCalculate[48].installment;
-        let interestRate60 = resultCalculate[60].interestRate;
-        let installment60 = resultCalculate[60].installment;
-        let interestRate72 = resultCalculate[72].interestRate;
-        let installment72 = resultCalculate[72].installment;
-        let interestRate84 =
-          resultCalculate[84] !== undefined
-            ? resultCalculate[84].interestRate
-            : null;
-        let installment84 =
-          resultCalculate[84] !== undefined ? resultCalculate[84].installment : null;
-
-        if (customerType === "normal") {
+        if (carYearTxt !== "") {
           document.getElementById(
             "result"
           ).innerHTML = `<!-- Add Table Data wiht Script -->
@@ -396,28 +209,12 @@
               <thead>
                 <tr>
                   <th>ปีจดทะเบียนรถยนต์</th>
-                  <th>ราคารถยนต์</th>
-                  <th>เงินดาวน์</th>
-                  <th>ยอดจัดไฟแนนซ์</th>
-                  <th>36 งวด (${interestRate36}%)</th>
-                  <th>48 งวด (${interestRate48}%)</th>
-                  <th>60 งวด (${interestRate60}%)</th>
-                  <th>72 งวด (${interestRate72}%)</th>
-                  <th>84 งวด (${interestRate84}%)</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
                   <td>${carYearTxt}</td>
-                  <td>${carPriceTxt}</td>
-                  <td>${downPaymentTxt}</td>
-                  <td>${loanTxt}</td>
-                  <td>${installment36}</td>
-                  <td>${installment48}</td>
-                  <td>${installment60}</td>
-                  <td>${installment72}</td>
-                  <td>${installment84}</td>
                 </tr>
               </tbody>
             </table>
@@ -435,24 +232,12 @@
               <thead>
                 <tr>
                   <th>ปีจดทะเบียนรถยนต์</th>
-                  <th>ราคารถยนต์</th>
-                  <th>เงินดาวน์</th>
-                  <th>ยอดจัดไฟแนนซ์</th>
-                  <th>48 งวด (${interestRate48}%)</th>
-                  <th>60 งวด (${interestRate60}%)</th>
-                  <th>72 งวด (${interestRate72}%)</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
                   <td>${carYearTxt}</td>
-                  <td>${carPriceTxt}</td>
-                  <td>${downPaymentTxt}</td>
-                  <td>${loanTxt}</td>
-                  <td>${installment48}</td>
-                  <td>${installment60}</td>
-                  <td>${installment72}</td>
                 </tr>
               </tbody>
             </table>
@@ -466,31 +251,10 @@
       }
 
       // Creat flex message
-      function createFlexMessage(
-        carYear,
-        carPrice,
-        downPayment,
-        loan,
-        resultCalculate,
-        customerType
-      ) {
+      function createFlexMessage(carYear) {
         let carYearTxt = new Date().getFullYear() - carYear;
-        let carPriceTxt = numberToString(carPrice);
-        let downPaymentTxt = numberToString(downPayment);
-        let loanTxt = numberToString(loan);
 
-        if (customerType === "normal") {
-          let interestRate36 = resultCalculate[36].interestRate;
-          let installment36 = resultCalculate[36].installment;
-          let interestRate48 = resultCalculate[48].interestRate;
-          let installment48 = resultCalculate[48].installment;
-          let interestRate60 = resultCalculate[60].interestRate;
-          let installment60 = resultCalculate[60].installment;
-          let interestRate72 = resultCalculate[72].interestRate;
-          let installment72 = resultCalculate[72].installment;
-          let interestRate84 = resultCalculate[84].interestRate;
-          let installment84 = resultCalculate[84].installment;
-
+        if (carYearTxt !== "") {
           // Using flex message simulator for json
           let flexJson = {
             type: "bubble",
@@ -573,7 +337,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${carPriceTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "md",
                           weight: "bold",
                           align: "end",
@@ -606,7 +370,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${downPaymentTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "md",
                           weight: "bold",
                           align: "end",
@@ -639,7 +403,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${loanTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "lg",
                           weight: "bold",
                           align: "end",
@@ -681,7 +445,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `36 งวด (${interestRate36}%)`,
+                          text: `36 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -693,7 +457,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment36} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -712,7 +476,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `48 งวด (${interestRate48}%)`,
+                          text: `48 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -724,7 +488,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment48} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -743,7 +507,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `60 งวด (${interestRate60}%)`,
+                          text: `60 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -755,7 +519,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment60} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -774,7 +538,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `72 งวด (${interestRate72}%)`,
+                          text: `72 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -786,7 +550,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment72} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -805,7 +569,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `84 งวด (${interestRate84}%)`,
+                          text: `84 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -817,7 +581,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment84} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -863,13 +627,6 @@
 
           return [{ type: "flex", altText: "คำนวณค่างวดรถ", contents: flexJson }];
         } else {
-          let interestRate48 = resultCalculate[48].interestRate;
-          let installment48 = resultCalculate[48].installment;
-          let interestRate60 = resultCalculate[60].interestRate;
-          let installment60 = resultCalculate[60].installment;
-          let interestRate72 = resultCalculate[72].interestRate;
-          let installment72 = resultCalculate[72].installment;
-
           // Using flex message simulator for json
           let flexJson = {
             type: "bubble",
@@ -952,7 +709,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${carPriceTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "md",
                           weight: "bold",
                           align: "end",
@@ -985,7 +742,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${downPaymentTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "md",
                           weight: "bold",
                           align: "end",
@@ -1018,7 +775,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${loanTxt} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "lg",
                           weight: "bold",
                           align: "end",
@@ -1060,7 +817,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `48 งวด (${interestRate48}%)`,
+                          text: `48 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -1072,7 +829,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment48} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -1091,7 +848,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `60 งวด (${interestRate60}%)`,
+                          text: `60 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -1103,7 +860,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment60} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
@@ -1122,7 +879,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `72 งวด (${interestRate72}%)`,
+                          text: `72 งวด (${carYearTxt}%)`,
                           size: "sm",
                         },
                       ],
@@ -1134,7 +891,7 @@
                       contents: [
                         {
                           type: "text",
-                          text: `${installment72} บาท`,
+                          text: `${carYearTxt} บาท`,
                           size: "sm",
                           align: "end",
                           weight: "bold",
